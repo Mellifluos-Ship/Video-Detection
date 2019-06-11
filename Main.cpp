@@ -23,14 +23,14 @@ int main(int argc, char** argv) {
 		vid >> frame;
 		imshow("Camera", frame);
 
-		Mat gray, edge, draw;
-		cvtColor(frame, gray, COLOR_BGR2GRAY);
+		Mat frame_gray, edge_det, dst;
+		cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
 
-		Canny(gray, edge, 20, 300, 3);
+		Canny(frame_gray, edge_det, 20, 300, 3);
 
-		edge.convertTo(draw, CV_8U);
-		namedWindow("EdgeDetected", WINDOW_AUTOSIZE);
-		imshow("EdgeDetected", draw);
+		edge.convertTo(dst, CV_8U);
+		namedWindow("Output", WINDOW_AUTOSIZE);
+		imshow("Output", draw);
 
 		if (waitKey(1000 / fps) >= 0)
 			break;
